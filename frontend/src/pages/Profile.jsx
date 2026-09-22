@@ -9,6 +9,11 @@ export default function Profile() {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  function handleLogout() {
+    localStorage.setItem("token", "");
+    window.location.reload();
+  }
+
   useEffect(() => {
     async function load() {
       try {
@@ -70,6 +75,15 @@ export default function Profile() {
           ))}
           {currentUser.resources.length === 0 && <p className="text-sm text-muted">No resources shared yet.</p>}
         </div>
+      </div>
+      <div className="flex flex-row-reverse">
+        <button
+          onClick={handleLogout}
+          type="submit"
+          className="mt-4 self-start px-5 py-2.5 rounded-md bg-error-600 text-white text-sm font-medium hover:bg-error-200"
+        >
+          Logout
+        </button>
       </div>
     </div>
   );
