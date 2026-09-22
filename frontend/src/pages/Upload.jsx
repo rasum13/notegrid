@@ -132,9 +132,9 @@ export default function Upload() {
     }
   }
 
-  const aiSummary = form.description
+  const resourceSummary = form.description
     ? `${form.description.slice(0, 160)}${form.description.length > 160 ? "…" : ""}`
-    : "AI will generate a short summary once you add a description.";
+    : "You have not provided a description...";
 
   if (step === "done") {
     return (
@@ -159,7 +159,7 @@ export default function Upload() {
   }
 
   return (
-    <div className="w-full">
+    <div className="w-[80%]">
       <h1 className="text-lg font-medium mb-1.5">Share a resource</h1>
       <p className="text-sm text-muted mb-7">
         Upload a PDF or link an external resource, tagged to the right subject and chapter.
@@ -172,7 +172,7 @@ export default function Upload() {
       </div>
 
       {step === "form" && (
-        <form onSubmit={handlePreview} className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_340px] gap-8 items-start">
+        <form onSubmit={handlePreview}>
           <div className="flex flex-col gap-5 min-w-0">
             <div className="flex gap-2 p-1 bg-paper border border-line rounded-md w-fit">
               {["file", "url"].map((t) => (
@@ -260,15 +260,6 @@ export default function Upload() {
               Continue to preview
             </button>
           </div>
-
-          <aside className="border border-line rounded-card p-5 bg-surface">
-            <p className="text-sm font-medium mb-2">Tagging tips</p>
-            <ul className="text-sm text-muted leading-relaxed flex flex-col gap-2 list-disc pl-4">
-              <li>Match the chapter to the official syllabus unit so juniors can find it later.</li>
-              <li>A clear description improves the AI summary and auto-tags.</li>
-              <li>Link resources are fine — you don't have to re-upload someone else's PDF.</li>
-            </ul>
-          </aside>
         </form>
       )}
 
@@ -279,12 +270,7 @@ export default function Upload() {
             <p className="text-sm text-muted mb-4">
               {form.subject} {form.chapter && `· ${form.chapter}`}
             </p>
-            <div className="bg-accent-50 rounded-md p-4 mb-4 max-w-[90ch]">
-              <p className="text-xs uppercase tracking-wide text-accent-700 font-medium mb-1.5">
-                AI summary
-              </p>
-              <p className="text-sm text-accent-700 leading-relaxed">{aiSummary}</p>
-            </div>
+            <p className="text-sm text-muted leading-relaxed">{resourceSummary}</p>
           </div>
 
           <div className="flex gap-3">
