@@ -51,7 +51,7 @@ export default function Profile() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 mb-9">
-        <StatCard label="Reputation" value={currentUser?.reputation} />
+        {/* <StatCard label="Reputation" value={currentUser?.reputation} /> */}
         <StatCard label="Resources shared" value={currentUser?.resources.length} />
         <StatCard label="Total votes" value={currentUser?.votes.length} />
       </div>

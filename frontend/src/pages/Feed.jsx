@@ -180,12 +180,12 @@ function pointsOf(type) {
       </div>
 
       <div className="w-[280px] shrink-0 hidden xl:block">
-        <div className="bg-accent-50 rounded-card p-5 mb-7">
-          <p className="text-sm font-medium text-accent-700 mb-3">Your reputation</p>
-          <p className="text-2xl font-medium text-accent-700 mt-1">
-            {currentUser?.reputation ?? 0}
-          </p>
-        </div>
+        {/* <div className="bg-accent-50 rounded-card p-5 mb-7"> */}
+        {/*   <p className="text-sm font-medium text-accent-700 mb-3">Your reputation</p> */}
+        {/*   <p className="text-2xl font-medium text-accent-700 mt-1"> */}
+        {/*     {currentUser?.reputation ?? 0} */}
+        {/*   </p> */}
+        {/* </div> */}
 
         <p className="text-sm font-medium mb-3">Suggested for you</p>
         <div className="flex flex-col gap-2">
