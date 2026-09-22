@@ -9,6 +9,7 @@ export default function Upload() {
   const navigate = useNavigate();
   const [subjects, setSubjects] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [uploading, setUpoading] = useState(false);
   const [step, setStep] = useState("form");
   const [file, setFile] = useState(null);
   const [form, setForm] = useState({
@@ -63,6 +64,7 @@ export default function Upload() {
   }, [])
 
   async function handleSubmit() {
+    setUpoading(true);
     try {
       // 1. get user
       const {
@@ -292,12 +294,21 @@ export default function Upload() {
             >
               Back
             </button>
-            <button
-              onClick={handleSubmit}
-              className="px-5 py-2.5 rounded-md bg-accent-600 text-white text-sm font-medium hover:bg-accent-700"
-            >
-              Confirm and submit
-            </button>
+            {
+              uploading
+              ? <button
+                className="px-5 py-2.5 rounded-md bg-accent-400/20 text-muted text-sm font-medium"
+                disabled
+              >
+                Uploading...
+              </button>
+              : <button
+                onClick={handleSubmit}
+                className="px-5 py-2.5 rounded-md bg-accent-600 text-white text-sm font-medium hover:bg-accent-700"
+              >
+                Confirm and submit
+              </button>
+            }
           </div>
         </div>
       )}
